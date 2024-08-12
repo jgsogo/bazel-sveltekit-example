@@ -1,0 +1,11 @@
+.DS_Store
+.bazelrc.user
+.idea/
+.svelte-kit/
+bazel-bin
+bazel-out
+bazel-testlogs
+bazel-bazel-sveltekit-example
+node_modules/
+secret.json
+secrets/
