@@ -33,6 +33,10 @@ npm.npm_translate_lock(
         "vite": [
             "vite=./bin/vite",
         ],
+        "vitest": [
+            # "vitest=./bin/vitest",
+            "vitest=./vitest.mjs",
+        ],
     },
     data = [
         "//sandbox/svelte-social-app:package.json",

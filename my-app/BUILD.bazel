@@ -130,3 +130,38 @@ vitest_bin.vitest_test(
     ] + glob(["src/**/*.test.ts"]),
     # grant_sandbox_write_permissions = True,
 )
+
+js_run_devserver(
+    name = "vitest2",
+    args = ["run --config vite.config.ts"],
+    chdir = package_name(),
+    command = "./node_modules/.bin/vitest",
+    data = [
+        ":sync",
+
+        # Configs
+        "vite.config.ts",
+        "package.json",
+        "tsconfig.json",
+        "svelte.config.js",
+
+        # Build deps
+        ":node_modules",  # TODO: Use //:node_modules instead
+
+        # Sources
+        ":src",
+        ":static",
+    ] + glob(["src/**/*.test.ts"]),
+    grant_sandbox_write_permissions = True,
+)
+
+sh_test(
+    name = "test",
+    srcs = ["test.sh"],
+    data = [
+        ":vitest2",
+    ],
+    args = [
+        "$(location :vitest2)"
+    ]
+)
