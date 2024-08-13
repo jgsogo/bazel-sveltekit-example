@@ -39,7 +39,7 @@ vite_bin.vite(
     ],
     args = ["build --config vite.config.ts"],
     chdir = package_name(),
-    out_dirs = ["dist"],
+    out_dirs = [".svelte-kit/output"],
     visibility = ["//visibility:public"],
 )
 
